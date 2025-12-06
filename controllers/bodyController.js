@@ -12,7 +12,7 @@ exports.getBodies = asyncHandler(async (req, res) => {
     limit = 10,
     search,
     type,
-    sort = "-createdAt"
+    sort = "name"
   } = req.query;
 
   // Build query
@@ -36,8 +36,7 @@ exports.getBodies = asyncHandler(async (req, res) => {
   const bodies = await CelestialBody.find(query)
     .sort(sort)
     .skip(skip)
-    .limit(limitNum)
-    .select("-__v");
+    .limit(limitNum);
 
   // Get total count for pagination
   const total = await CelestialBody.countDocuments(query);
@@ -55,48 +54,22 @@ exports.getBodies = asyncHandler(async (req, res) => {
 });
 
 /**
- * @route   GET /api/bodies/:idOrSlug
- * @desc    Get single celestial body by ID or slug
+ * @route   GET /api/bodies/:id
+ * @desc    Get single celestial body by ID only
  * @access  Public
  */
 exports.getBody = asyncHandler(async (req, res) => {
-  const { idOrSlug } = req.params;
+  const { id } = req.params;
 
-  // Try to find by ID first, then by slug
-  let body;
-
-  if (idOrSlug.match(/^[0-9a-fA-F]{24}$/)) {
-    // Valid ObjectId format
-    body = await CelestialBody.findById(idOrSlug).select("-__v");
-  }
-
-  if (!body) {
-    // Try finding by slug
-    body = await CelestialBody.findOne({ slug: idOrSlug }).select("-__v");
-  }
-
-  if (!body) {
-    return res.status(404).json({
+  // Find by ID only (slug removed)
+  if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({
       success: false,
-      message: "Celestial body not found"
+      message: "Invalid ID format"
     });
   }
 
-  res.json({
-    success: true,
-    data: body
-  });
-});
-
-/**
- * @route   GET /api/bodies/slug/:slug
- * @desc    Get single celestial body by slug only
- * @access  Public
- */
-exports.getBodyBySlug = asyncHandler(async (req, res) => {
-  const { slug } = req.params;
-
-  const body = await CelestialBody.findOne({ slug }).select("-__v");
+  const body = await CelestialBody.findById(id);
 
   if (!body) {
     return res.status(404).json({
@@ -117,6 +90,34 @@ exports.getBodyBySlug = asyncHandler(async (req, res) => {
  * @access  Private/Admin
  */
 exports.createBody = asyncHandler(async (req, res) => {
+  // Validate all required fields
+  const { name, type, description, imageUrl, discoveredBy, discoveryDate, funFact } = req.body;
+
+  const missingFields = [];
+  if (!name) missingFields.push("name");
+  if (!type) missingFields.push("type");
+  if (!description) missingFields.push("description");
+  if (!imageUrl) missingFields.push("imageUrl");
+  if (!discoveredBy) missingFields.push("discoveredBy");
+  if (!discoveryDate) missingFields.push("discoveryDate");
+  if (!funFact) missingFields.push("funFact");
+
+  if (missingFields.length > 0) {
+    return res.status(400).json({
+      success: false,
+      message: `Missing required fields: ${missingFields.join(", ")}`
+    });
+  }
+
+  // Check if name already exists
+  const existing = await CelestialBody.findOne({ name });
+  if (existing) {
+    return res.status(400).json({
+      success: false,
+      message: "A celestial body with this name already exists"
+    });
+  }
+
   const newBody = await CelestialBody.create(req.body);
 
   res.status(201).json({
@@ -127,28 +128,41 @@ exports.createBody = asyncHandler(async (req, res) => {
 });
 
 /**
- * @route   PUT /api/bodies/:idOrSlug
- * @desc    Update celestial body by ID or slug
+ * @route   PUT /api/bodies/:id
+ * @desc    Update celestial body by ID
  * @access  Private/Admin
  */
 exports.updateBody = asyncHandler(async (req, res) => {
-  const { idOrSlug } = req.params;
+  const { id } = req.params;
 
-  // Find by ID or slug
-  let query;
-  if (idOrSlug.match(/^[0-9a-fA-F]{24}$/)) {
-    query = { _id: idOrSlug };
-  } else {
-    query = { slug: idOrSlug };
+  if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid ID format"
+    });
   }
 
-  const updated = await CelestialBody.findOneAndUpdate(
-    query,
+  // If updating name, check for duplicates
+  if (req.body.name) {
+    const existing = await CelestialBody.findOne({
+      name: req.body.name,
+      _id: { $ne: id }
+    });
+
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "A celestial body with this name already exists"
+      });
+    }
+  }
+
+  const updated = await CelestialBody.findByIdAndUpdate(
+    id,
     req.body,
     {
       new: true,
-      runValidators: true,
-      select: "-__v"
+      runValidators: true
     }
   );
 
@@ -167,22 +181,21 @@ exports.updateBody = asyncHandler(async (req, res) => {
 });
 
 /**
- * @route   DELETE /api/bodies/:idOrSlug
- * @desc    Delete celestial body by ID or slug
+ * @route   DELETE /api/bodies/:id
+ * @desc    Delete celestial body by ID
  * @access  Private/Admin
  */
 exports.deleteBody = asyncHandler(async (req, res) => {
-  const { idOrSlug } = req.params;
+  const { id } = req.params;
 
-  // Find by ID or slug
-  let query;
-  if (idOrSlug.match(/^[0-9a-fA-F]{24}$/)) {
-    query = { _id: idOrSlug };
-  } else {
-    query = { slug: idOrSlug };
+  if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid ID format"
+    });
   }
 
-  const deleted = await CelestialBody.findOneAndDelete(query);
+  const deleted = await CelestialBody.findByIdAndDelete(id);
 
   if (!deleted) {
     return res.status(404).json({

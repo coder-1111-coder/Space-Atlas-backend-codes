@@ -9,6 +9,9 @@ frontend/node_modules/
 .env.test.local
 .env.production.local
 
+# Credentials
+ADMIN_CREDENTIALS.md
+
 # Build outputs
 frontend/dist/
 frontend/build/

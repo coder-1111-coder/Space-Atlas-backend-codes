@@ -12,11 +12,10 @@
 
 .login-container {
     width: 100%;
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-2xl);
-    align-items: start;
+    max-width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-card {
@@ -99,8 +98,12 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .login-page {
+        padding: var(--spacing-md);
+    }
+
     .login-container {
-        grid-template-columns: 1fr;
+        max-width: 100%;
     }
 
     .login-card {

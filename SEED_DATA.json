@@ -1,0 +1,272 @@
+[
+    {
+        "name": "Mercury",
+        "type": "Planet",
+        "description": "Mercury is the smallest planet in our Solar System and the closest to the Sun. Despite its proximity to the Sun, it experiences extreme temperature variations due to its lack of atmosphere.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/800px-Mercury_in_color_-_Prockter07-edit1.jpg",
+        "discoveredBy": "Known since ancient times",
+        "discoveryDate": "Prehistoric",
+        "funFact": "Mercury has no moons and completes three rotations for every two orbits around the Sun!"
+    },
+    {
+        "name": "Venus",
+        "type": "Planet",
+        "description": "Venus is the second planet from the Sun and is often called Earth's twin due to similar size. However, its thick toxic atmosphere makes it the hottest planet in our solar system.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/800px-Venus-real_color.jpg",
+        "discoveredBy": "Known since ancient times",
+        "discoveryDate": "Prehistoric",
+        "funFact": "A day on Venus is longer than its year - it takes 243 Earth days to rotate once!"
+    },
+    {
+        "name": "Earth",
+        "type": "Planet",
+        "description": "Earth is the third planet from the Sun and the only known planet to harbor life. It has a unique atmosphere that protects life and maintains liquid water on its surface.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/800px-The_Earth_seen_from_Apollo_17.jpg",
+        "discoveredBy": "N/A",
+        "discoveryDate": "N/A",
+        "funFact": "Earth is the only planet not named after a Greek or Roman deity!"
+    },
+    {
+        "name": "Mars",
+        "type": "Planet",
+        "description": "Mars is the fourth planet from the Sun, known as the Red Planet due to iron oxide on its surface. It has the largest volcano and canyon in the solar system.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/800px-OSIRIS_Mars_true_color.jpg",
+        "discoveredBy": "Known since ancient times",
+        "discoveryDate": "Prehistoric",
+        "funFact": "Mars has the tallest mountain in the solar system - Olympus Mons, standing at 21 km high!"
+    },
+    {
+        "name": "Jupiter",
+        "type": "Planet",
+        "description": "Jupiter is the largest planet in our Solar System, a gas giant with a mass more than twice that of all other planets combined. Its Great Red Spot is a massive storm larger than Earth.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/800px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg",
+        "discoveredBy": "Known since ancient times",
+        "discoveryDate": "Prehistoric",
+        "funFact": "Jupiter has 95 confirmed moons and a faint ring system discovered in 1979!"
+    },
+    {
+        "name": "Saturn",
+        "type": "Planet",
+        "description": "Saturn is the sixth planet from the Sun and is famous for its spectacular ring system made of ice and rock particles. It is the second-largest planet in our solar system.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/800px-Saturn_during_Equinox.jpg",
+        "discoveredBy": "Known since ancient times",
+        "discoveryDate": "Prehistoric",
+        "funFact": "Saturn is so light it would float in water if there was a bathtub big enough!"
+    },
+    {
+        "name": "Uranus",
+        "type": "Planet",
+        "description": "Uranus is the seventh planet from the Sun and rotates on its side, making it unique among planets. It appears blue-green due to methane in its atmosphere.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/800px-Uranus2.jpg",
+        "discoveredBy": "William Herschel",
+        "discoveryDate": "1781-03-13",
+        "funFact": "Uranus rotates at nearly 90 degrees from the plane of its orbit, essentially rolling around the Sun!"
+    },
+    {
+        "name": "Neptune",
+        "type": "Planet",
+        "description": "Neptune is the eighth and farthest planet from the Sun in our Solar System. It has the strongest winds in the solar system, reaching speeds of 2,100 km/h.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg/800px-Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg",
+        "discoveredBy": "Johann Galle",
+        "discoveryDate": "1846-09-23",
+        "funFact": "Neptune was the first planet located through mathematical predictions rather than observation!"
+    },
+    {
+        "name": "Moon",
+        "type": "Moon",
+        "description": "The Moon is Earth's only natural satellite and the fifth largest moon in the Solar System. It influences Earth's tides and has been a subject of human fascination throughout history.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/800px-FullMoon2010.jpg",
+        "discoveredBy": "Known since prehistoric times",
+        "discoveryDate": "Prehistoric",
+        "funFact": "The Moon is gradually moving away from Earth at a rate of about 3.8 cm per year!"
+    },
+    {
+        "name": "Europa",
+        "type": "Moon",
+        "description": "Europa is one of Jupiter's largest moons and is covered by a layer of ice. Scientists believe a vast ocean of liquid water exists beneath its frozen surface, making it a prime candidate for extraterrestrial life.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Europa-moon.jpg/800px-Europa-moon.jpg",
+        "discoveredBy": "Galileo Galilei",
+        "discoveryDate": "1610-01-08",
+        "funFact": "Europa's subsurface ocean may contain twice as much water as all of Earth's oceans combined!"
+    },
+    {
+        "name": "Ganymede",
+        "type": "Moon",
+        "description": "Ganymede is the largest moon in the Solar System, even larger than the planet Mercury. It is the only moon known to have its own magnetic field.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Ganymede_g1_true-edit1.jpg/800px-Ganymede_g1_true-edit1.jpg",
+        "discoveredBy": "Galileo Galilei",
+        "discoveryDate": "1610-01-07",
+        "funFact": "Ganymede is the only moon with its own magnetosphere, creating auroras at its poles!"
+    },
+    {
+        "name": "Callisto",
+        "type": "Moon",
+        "description": "Callisto is the second-largest moon of Jupiter and has the most heavily cratered surface in the Solar System. It may harbor a subsurface ocean beneath its ancient, battered crust.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Callisto.jpg/800px-Callisto.jpg",
+        "discoveredBy": "Galileo Galilei",
+        "discoveryDate": "1610-01-07",
+        "funFact": "Callisto's surface is about 4 billion years old, making it one of the oldest in the solar system!"
+    },
+    {
+        "name": "Titan",
+        "type": "Moon",
+        "description": "Titan is Saturn's largest moon and the only moon in the Solar System with a dense atmosphere. It has lakes and seas of liquid methane and ethane on its surface.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Titan_in_true_color.jpg/800px-Titan_in_true_color.jpg",
+        "discoveredBy": "Christiaan Huygens",
+        "discoveryDate": "1655-03-25",
+        "funFact": "Titan is the only place besides Earth where stable bodies of surface liquid have been found!"
+    },
+    {
+        "name": "Enceladus",
+        "type": "Moon",
+        "description": "Enceladus is a small icy moon of Saturn that shoots geysers of water ice into space from its south polar region. These geysers suggest a subsurface ocean that could potentially harbor life.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/PIA17202_-_Approaching_Enceladus.jpg/800px-PIA17202_-_Approaching_Enceladus.jpg",
+        "discoveredBy": "William Herschel",
+        "discoveryDate": "1789-08-28",
+        "funFact": "Enceladus reflects nearly 100% of sunlight, making it the most reflective object in our solar system!"
+    },
+    {
+        "name": "Mimas",
+        "type": "Moon",
+        "description": "Mimas is a moon of Saturn best known for its enormous impact crater, Herschel, which gives it a striking resemblance to the Death Star from Star Wars. Despite its small size, it plays a crucial role in shaping Saturn's rings.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA12570.jpg",
+        "discoveredBy": "William Herschel",
+        "discoveryDate": "1789-09-17",
+        "funFact": "The Herschel crater on Mimas is so large that the impact almost destroyed the entire moon!"
+    },
+    {
+        "name": "Io",
+        "type": "Moon",
+        "description": "Io is the innermost of Jupiter's four large Galilean moons and is the most volcanically active body in the Solar System. Its surface is constantly being reshaped by hundreds of active volcanoes.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Io_highest_resolution_true_color.jpg/800px-Io_highest_resolution_true_color.jpg",
+        "discoveredBy": "Galileo Galilei",
+        "discoveryDate": "1610-01-08",
+        "funFact": "Io has over 400 active volcanoes, more than any other body in the solar system!"
+    },
+    {
+        "name": "Triton",
+        "type": "Moon",
+        "description": "Triton is Neptune's largest moon and is unique because it orbits in the opposite direction to Neptune's rotation. It is one of the coldest objects in the Solar System with active nitrogen geysers.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA00317.jpg",
+        "discoveredBy": "William Lassell",
+        "discoveryDate": "1846-10-10",
+        "funFact": "Triton is slowly spiraling toward Neptune and will eventually be torn apart by tidal forces!"
+    },
+    {
+        "name": "Phobos",
+        "type": "Moon",
+        "description": "Phobos is the larger and innermost of Mars's two moons. It orbits so close to Mars that it completes three orbits in a single Martian day and is slowly spiraling inward.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Phobos_colour_2008.jpg/800px-Phobos_colour_2008.jpg",
+        "discoveredBy": "Asaph Hall",
+        "discoveryDate": "1877-08-18",
+        "funFact": "Phobos will crash into Mars or break apart into a ring in about 50 million years!"
+    },
+    {
+        "name": "Deimos",
+        "type": "Moon",
+        "description": "Deimos is the smaller and outermost of Mars's two moons. It is one of the smallest moons in the Solar System and has a very smooth surface compared to Phobos.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Deimos-MRO.jpg/800px-Deimos-MRO.jpg",
+        "discoveredBy": "Asaph Hall",
+        "discoveryDate": "1877-08-12",
+        "funFact": "From the surface of Mars, Deimos would appear as a bright star rather than a moon!"
+    },
+    {
+        "name": "Rhea",
+        "type": "Moon",
+        "description": "Rhea is Saturn's second-largest moon and is composed primarily of water ice with a small rocky core. It may have had a tenuous ring system of its own in the past.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA07763.jpg",
+        "discoveredBy": "Giovanni Cassini",
+        "discoveryDate": "1672-12-23",
+        "funFact": "Rhea may have once had its own ring system, making it the only moon known to have rings!"
+    },
+    {
+        "name": "Vesta",
+        "type": "Asteroid",
+        "description": "Vesta is one of the largest objects in the asteroid belt and is unique because it has a differentiated interior similar to terrestrial planets. It is the brightest asteroid visible from Earth.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA15678.jpg",
+        "discoveredBy": "Heinrich Olbers",
+        "discoveryDate": "1807-03-29",
+        "funFact": "Vesta is the only asteroid bright enough to be occasionally visible to the naked eye!"
+    },
+    {
+        "name": "Bennu",
+        "type": "Asteroid",
+        "description": "Bennu is a carbonaceous asteroid that is the target of NASA's OSIRIS-REx mission. It is a potentially hazardous asteroid that could impact Earth in the late 22nd century.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA22486.jpg",
+        "discoveredBy": "LINEAR Project",
+        "discoveryDate": "1999-09-11",
+        "funFact": "Bennu is shaped like a spinning top and completes one rotation every 4.3 hours!"
+    },
+    {
+        "name": "Pallas",
+        "type": "Asteroid",
+        "description": "Pallas is the third-largest asteroid in the Solar System and has an unusual highly inclined and eccentric orbit. Its surface is heavily cratered and it may be a protoplanet.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA24442.jpg",
+        "discoveredBy": "Heinrich Olbers",
+        "discoveryDate": "1802-03-28",
+        "funFact": "Pallas has one of the most tilted orbits of any large asteroid, at 34 degrees!"
+    },
+    {
+        "name": "Hygiea",
+        "type": "Asteroid",
+        "description": "Hygiea is the fourth-largest asteroid in the main belt and is nearly spherical in shape. Recent observations suggest it might qualify as a dwarf planet due to its round shape.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA23961.jpg",
+        "discoveredBy": "Annibale de Gasparis",
+        "discoveryDate": "1849-04-12",
+        "funFact": "Hygiea might be the smallest dwarf planet in the solar system if officially classified!"
+    },
+    {
+        "name": "Pluto",
+        "type": "Dwarf Planet",
+        "description": "Pluto is a dwarf planet in the Kuiper belt and was considered the ninth planet until 2006. It has five known moons and a heart-shaped glacier on its surface called Tombaugh Regio.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Pluto_in_True_Color_-_High-Res.jpg/800px-Pluto_in_True_Color_-_High-Res.jpg",
+        "discoveredBy": "Clyde Tombaugh",
+        "discoveryDate": "1930-02-18",
+        "funFact": "Pluto's orbit is so eccentric that it was closer to the Sun than Neptune from 1979 to 1999!"
+    },
+    {
+        "name": "Ceres",
+        "type": "Dwarf Planet",
+        "description": "Ceres is the largest object in the asteroid belt and the only dwarf planet located in the inner Solar System. It contains a significant amount of water ice and may have a subsurface ocean.",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ceres_-_RC3_-_Haulani_Crater_%2822381131691%29_%28cropped%29.jpg/800px-Ceres_-_RC3_-_Haulani_Crater_%2822381131691%29_%28cropped%29.jpg",
+        "discoveredBy": "Giuseppe Piazzi",
+        "discoveryDate": "1801-01-01",
+        "funFact": "Ceres contains about one-third of the total mass of the entire asteroid belt!"
+    },
+    {
+        "name": "Makemake",
+        "type": "Dwarf Planet",
+        "description": "Makemake is a dwarf planet in the Kuiper belt and is one of the largest known objects in the outer Solar System. Its surface is covered with frozen methane and it has one known moon.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA19450.jpg",
+        "discoveredBy": "Michael Brown, Chad Trujillo, David Rabinowitz",
+        "discoveryDate": "2005-03-31",
+        "funFact": "Makemake was named after the creator deity in the mythology of the Rapa Nui people of Easter Island!"
+    },
+    {
+        "name": "Halley's Comet",
+        "type": "Comet",
+        "description": "Halley's Comet is the most famous periodic comet, visible from Earth every 75-76 years. It has been observed and recorded by astronomers since at least 240 BC.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA00136.jpg",
+        "discoveredBy": "Edmond Halley",
+        "discoveryDate": "1705",
+        "funFact": "Halley's Comet will next be visible from Earth in 2061!"
+    },
+    {
+        "name": "Comet NEOWISE",
+        "type": "Comet",
+        "description": "Comet NEOWISE is a long-period comet discovered in 2020 that became visible to the naked eye. It won't return to the inner Solar System for another 6,800 years.",
+        "imageUrl": "https://images-assets.nasa.gov/image/iss063e035700/iss063e035700~orig.jpg",
+        "discoveredBy": "NEOWISE space telescope",
+        "discoveryDate": "2020-03-27",
+        "funFact": "NEOWISE was the brightest comet visible from the Northern Hemisphere since Comet Hale-Bopp in 1997!"
+    },
+    {
+        "name": "Hale-Bopp",
+        "type": "Comet",
+        "description": "Hale-Bopp was one of the most widely observed comets of the 20th century and was visible to the naked eye for a record 18 months. It has an orbital period of approximately 2,533 years.",
+        "imageUrl": "https://photojournal.jpl.nasa.gov/jpeg/PIA01322.jpg",
+        "discoveredBy": "Alan Hale and Thomas Bopp",
+        "discoveryDate": "1995-07-23",
+        "funFact": "Hale-Bopp's nucleus is estimated to be 60 km in diameter, making it unusually large for a comet!"
+    }
+]

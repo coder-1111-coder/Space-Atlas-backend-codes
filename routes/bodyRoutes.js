@@ -7,8 +7,7 @@ const bodyCtrl = require("../controllers/bodyController");
 
 // Public routes
 router.get("/", bodyCtrl.getBodies);
-router.get("/slug/:slug", bodyCtrl.getBodyBySlug);
-router.get("/:idOrSlug", bodyCtrl.getBody);
+router.get("/:id", bodyCtrl.getBody);
 
 // Admin routes (protected)
 router.post(
@@ -20,7 +19,7 @@ router.post(
 );
 
 router.put(
-    "/:idOrSlug",
+    "/:id",
     auth,
     requireRole("admin"),
     validateBody,
@@ -28,7 +27,7 @@ router.put(
 );
 
 router.delete(
-    "/:idOrSlug",
+    "/:id",
     auth,
     requireRole("admin"),
     bodyCtrl.deleteBody

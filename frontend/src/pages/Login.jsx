@@ -118,14 +118,6 @@ function Login() {
                         </button>
                     </div>
                 </div>
-
-                <div className="login-info">
-                    <div className="info-box">
-                        <h4>Default Credentials</h4>
-                        <p><strong>Username:</strong> admin</p>
-                        <p><strong>Password:</strong> Admin@123</p>
-                    </div>
-                </div>
             </div>
         </div>
     );

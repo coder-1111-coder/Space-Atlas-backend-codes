@@ -16,7 +16,6 @@ function Navbar() {
             <div className="container">
                 <div className="navbar-content">
                     <Link to="/" className="navbar-brand">
-                        <span className="brand-icon">🌌</span>
                         <span className="brand-text">Space Atlas</span>
                     </Link>
 

@@ -16,11 +16,13 @@ function Admin() {
         type: 'Planet',
         description: '',
         discoveryDate: '',
-        discoveredBy: ''
+        discoveredBy: '',
+        imageUrl: '',
+        funFact: ''
     });
     const [formErrors, setFormErrors] = useState([]);
 
-    const types = ['Planet', 'Moon', 'Asteroid', 'Comet', 'Dwarf Planet', 'Other'];
+    const types = ['Planet', 'Moon', 'Asteroid', 'Dwarf Planet', 'Comet'];
 
     useEffect(() => {
         if (!authAPI.isAuthenticated()) {
@@ -49,8 +51,10 @@ function Admin() {
                 name: body.name,
                 type: body.type,
                 description: body.description,
-                discoveryDate: body.discoveryDate ? body.discoveryDate.split('T')[0] : '',
-                discoveredBy: body.discoveredBy || ''
+                discoveryDate: body.discoveryDate || '',
+                discoveredBy: body.discoveredBy || '',
+                imageUrl: body.imageUrl || '',
+                funFact: body.funFact || ''
             });
         } else {
             setEditingBody(null);
@@ -59,7 +63,9 @@ function Admin() {
                 type: 'Planet',
                 description: '',
                 discoveryDate: '',
-                discoveredBy: ''
+                discoveredBy: '',
+                imageUrl: '',
+                funFact: ''
             });
         }
         setFormErrors([]);
@@ -303,6 +309,34 @@ function Admin() {
                                     className="form-input"
                                     value={formData.discoveredBy}
                                     onChange={handleChange}
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="imageUrl" className="form-label">Image URL *</label>
+                                <input
+                                    type="url"
+                                    id="imageUrl"
+                                    name="imageUrl"
+                                    className="form-input"
+                                    placeholder="https://example.com/image.jpg"
+                                    value={formData.imageUrl}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="funFact" className="form-label">Fun Fact *</label>
+                                <textarea
+                                    id="funFact"
+                                    name="funFact"
+                                    className="form-textarea"
+                                    placeholder="Enter an interesting fact about this celestial body..."
+                                    value={formData.funFact}
+                                    onChange={handleChange}
+                                    required
+                                    rows="3"
                                 />
                             </div>
 

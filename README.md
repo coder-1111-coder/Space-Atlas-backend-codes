@@ -1,291 +1,388 @@
-# 🌌 Space Atlas - Full Stack Application
+# 🌌 Space Atlas
 
-A modern, secure, and feature-rich full-stack application for exploring and managing celestial bodies. Built with Node.js, Express, MongoDB, and React.
+A full-stack web application for exploring celestial bodies in our Solar System. Built with React, Node.js, Express, and MongoDB.
+
+![Space Atlas](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-ISC-green.svg)
+
+## 📋 Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Running the Application](#running-the-application)
+- [Database Seeding](#database-seeding)
+- [Admin Access](#admin-access)
+- [Project Structure](#project-structure)
+- [API Endpoints](#api-endpoints)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## ✨ Features
 
-### Backend
-- ✅ **Hardened Security**: Helmet, MongoDB sanitization, rate limiting
-- ✅ **Centralized Error Handling**: Consistent error responses
-- ✅ **JWT Authentication**: Secure admin login
-- ✅ **Role-Based Authorization**: Admin-only routes
-- ✅ **Joi Validation**: Comprehensive input validation
-- ✅ **Enhanced Mongoose Schemas**: Timestamps, slugs, text search indexes
-- ✅ **Advanced CRUD**: Pagination, search, filters, sorting
-- ✅ **ID or Slug Lookup**: Flexible resource identification
+### Public Features
+- 🌍 Browse 30+ celestial bodies (planets, moons, asteroids, dwarf planets, comets)
+- 🔍 Search and filter by type
+- 📱 Responsive design for all devices
+- 🖼️ High-quality NASA images for each celestial body
+- 📖 Detailed information pages with fun facts
+- 🎨 Modern, beautiful UI with smooth animations
+
+### Admin Features
+- 🔐 Secure authentication with JWT
+- ➕ Create new celestial bodies
+- ✏️ Edit existing entries
+- 🗑️ Delete celestial bodies
+- 🖼️ Manage images via URLs
+- 📊 Full CRUD operations
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- ✅ **Modern React SPA**: Built with Vite
-- ✅ **Beautiful UI**: Deep space theme with gradients and animations
-- ✅ **Responsive Design**: Mobile-first approach
-- ✅ **Advanced Filtering**: Search, type filter, sorting
-- ✅ **Pagination**: Efficient data loading
-- ✅ **Admin Dashboard**: Full CRUD operations
-- ✅ **Service Layer**: Centralized API calls with auto token injection
-- ✅ **SEO Optimized**: Proper meta tags and semantic HTML
+- **React** 18.3.1 - UI library
+- **React Router DOM** 7.1.1 - Client-side routing
+- **Axios** 1.7.9 - HTTP client
+- **Vite** 6.0.3 - Build tool
 
-## 🚀 Quick Start
+### Backend
+- **Node.js** - Runtime environment
+- **Express** 4.21.2 - Web framework
+- **MongoDB** - Database
+- **Mongoose** 8.20.0 - ODM
+- **JWT** - Authentication
+- **Bcrypt** - Password hashing
+- **Helmet** - Security headers
+- **Morgan** - Logging
+- **Express Rate Limit** - Rate limiting
 
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (running locally or remote)
+## 📦 Prerequisites
 
-### Backend Setup
+Before you begin, ensure you have the following installed:
 
-1. **Navigate to the backend directory**:
-   ```bash
-   cd space-atlas
-   ```
+- **Node.js** (v14 or higher)
+- **npm** (v6 or higher)
+- **MongoDB Atlas account** (or local MongoDB instance)
+- **Git**
 
-2. **Install dependencies** (already done):
-   ```bash
-   npm install
-   ```
+## 🚀 Installation
 
-3. **Environment variables** (already configured in `.env`):
-   ```
-   PORT=4000
-   MONGO_URI=mongodb://localhost:27017/spaceatlas
-   JWT_SECRET=myjwtsecret
-   ADMIN_EMAIL=admin@space.com
-   ADMIN_PASSWORD=Admin@123
-   ```
+### 1. Clone the Repository
 
-4. **Create admin user**:
-   ```bash
-   node utils/createAdmin.js
-   ```
+```bash
+git clone <your-repo-url>
+cd Space-Atlas-backend-codes
+```
 
-5. **Start the backend server**:
-   ```bash
-   npm start
-   ```
+### 2. Install Backend Dependencies
 
-   Backend will run on: `http://localhost:4000`
+```bash
+npm install
+```
 
-### Frontend Setup
+### 3. Install Frontend Dependencies
 
-1. **Navigate to the frontend directory**:
-   ```bash
-   cd frontend
-   ```
+```bash
+cd frontend
+npm install
+cd ..
+```
 
-2. **Install dependencies** (already done):
-   ```bash
-   npm install
-   ```
+## ⚙️ Configuration
 
-3. **Environment variables** (already configured in `.env`):
-   ```
-   VITE_API_URL=http://localhost:4000/api
-   ```
+### 1. Create Environment File
 
-4. **Start the frontend dev server**:
-   ```bash
-   npm run dev
-   ```
+Create a `.env` file in the root directory:
 
-   Frontend will run on: `http://localhost:5173`
+```bash
+cp .env.example .env
+```
+
+### 2. Configure Environment Variables
+
+Edit `.env` with your settings:
+
+```env
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+
+# MongoDB Configuration
+MONGO_URI=your_mongodb_connection_string
+
+# JWT Configuration
+JWT_SECRET=your_super_secret_jwt_key_here
+JWT_EXPIRE=7d
+
+# Admin Credentials
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=Admin@123
+```
+
+**Important**: 
+- Replace `your_mongodb_connection_string` with your actual MongoDB Atlas URI
+- Change `JWT_SECRET` to a strong random string
+- Update admin credentials for production
+
+## 🏃 Running the Application
+
+### Development Mode
+
+#### Start Backend Server
+```bash
+npm run dev
+```
+Backend will run on `http://localhost:5000`
+
+#### Start Frontend Server (in a new terminal)
+```bash
+cd frontend
+npm run dev
+```
+Frontend will run on `http://localhost:5173`
+
+### Production Mode
+
+#### Backend
+```bash
+npm start
+```
+
+#### Frontend
+```bash
+cd frontend
+npm run build
+npm run preview
+```
+
+## 🌱 Database Seeding
+
+### Seed Celestial Bodies Data
+
+The application comes with 30 pre-configured celestial bodies:
+
+```bash
+node seedDatabase.js
+```
+
+This will populate your database with:
+- 8 Planets (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune)
+- 12 Moons (Moon, Europa, Ganymede, Callisto, Titan, Enceladus, Mimas, Io, Triton, Phobos, Deimos, Rhea)
+- 4 Asteroids (Vesta, Bennu, Pallas, Hygiea)
+- 3 Dwarf Planets (Pluto, Ceres, Makemake)
+- 3 Comets (Halley's Comet, NEOWISE, Hale-Bopp)
+
+### Create Admin User
+
+```bash
+npm run seed:admin
+```
+
+## 🔐 Admin Access
+
+### Default Credentials
+- **Username**: `admin`
+- **Password**: `Admin@123`
+
+**⚠️ Important**: Change these credentials in production!
+
+### Admin Panel
+Access the admin panel at: `http://localhost:5173/login`
+
+### Admin Features
+- Create new celestial bodies
+- Edit existing entries
+- Delete celestial bodies
+- Manage images
+- All fields are validated
 
 ## 📁 Project Structure
 
-### Backend
 ```
-space-atlas/
+Space-Atlas-backend-codes/
 ├── config/
-│   └── db.js                 # MongoDB connection & seed data
+│   └── db.js                 # Database connection
 ├── controllers/
-│   ├── authController.js     # Login logic
-│   └── bodyController.js     # CRUD operations
+│   ├── authController.js     # Authentication logic
+│   └── bodyController.js     # Celestial body CRUD
+├── frontend/
+│   ├── public/               # Static assets
+│   └── src/
+│       ├── components/       # React components
+│       ├── pages/            # Page components
+│       ├── services/         # API services
+│       └── App.jsx           # Main app component
 ├── middlewares/
 │   ├── authMiddleware.js     # JWT verification
-│   ├── requireRole.js        # Role-based auth
-│   ├── validation.js         # Joi schemas
-│   ├── errorHandler.js       # Centralized error handler
-│   └── logger.js             # Request logger
+│   ├── errorHandler.js       # Error handling
+│   ├── requireRole.js        # Role-based access
+│   └── validateBody.js       # Request validation
 ├── models/
-│   ├── CelestialBody.js      # Enhanced schema with slugs
+│   ├── CelestialBody.js      # Celestial body schema
 │   └── User.js               # User schema
 ├── routes/
 │   ├── authRoutes.js         # Auth endpoints
-│   └── bodyRoutes.js         # Body endpoints
+│   └── bodyRoutes.js         # Celestial body endpoints
 ├── utils/
-│   ├── asyncHandler.js       # Async wrapper
-│   └── createAdmin.js        # Admin seeder
+│   ├── asyncHandler.js       # Async error wrapper
+│   └── createAdmin.js        # Admin creation script
 ├── .env                      # Environment variables
-├── package.json
-└── server.js                 # Entry point
+├── .gitignore                # Git ignore rules
+├── package.json              # Dependencies
+├── seedDatabase.js           # Database seeding
+├── SEED_DATA.json            # Celestial bodies data
+└── server.js                 # Express server
 ```
 
-### Frontend
-```
-frontend/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx        # Navigation bar
-│   │   ├── Navbar.css
-│   │   ├── BodyCard.jsx      # Celestial body card
-│   │   └── BodyCard.css
-│   ├── pages/
-│   │   ├── Home.jsx          # Home page with filters
-│   │   ├── Home.css
-│   │   ├── Detail.jsx        # Body detail page
-│   │   ├── Detail.css
-│   │   ├── Login.jsx         # Admin login
-│   │   ├── Login.css
-│   │   ├── Admin.jsx         # Admin dashboard
-│   │   └── Admin.css
-│   ├── services/
-│   │   └── api.js            # API service layer
-│   ├── App.jsx               # Main app component
-│   ├── App.css
-│   ├── main.jsx              # Entry point
-│   └── index.css             # Global styles & theme
-├── .env                      # Environment variables
-├── index.html                # HTML template
-├── package.json
-└── vite.config.js
+## 🔌 API Endpoints
+
+### Public Endpoints
+
+#### Get All Celestial Bodies
+```http
+GET /api/bodies
+Query Parameters:
+  - page: Page number (default: 1)
+  - limit: Items per page (default: 10)
+  - search: Search term
+  - type: Filter by type
+  - sort: Sort field (default: name)
 ```
 
-## 🔐 API Endpoints
-
-### Public Routes
-- `GET /` - Health check
-- `GET /api/bodies` - Get all bodies (with pagination, search, filters)
-- `GET /api/bodies/:idOrSlug` - Get single body by ID or slug
-- `POST /api/auth/login` - Admin login
-
-### Protected Routes (Admin Only)
-- `POST /api/bodies` - Create new body
-- `PUT /api/bodies/:idOrSlug` - Update body
-- `DELETE /api/bodies/:idOrSlug` - Delete body
-
-### Query Parameters for GET /api/bodies
-- `page` - Page number (default: 1)
-- `limit` - Items per page (default: 10)
-- `search` - Text search in name and description
-- `type` - Filter by type (Planet, Moon, Asteroid, Comet, Dwarf Planet, Other)
-- `sort` - Sort field (e.g., `-createdAt`, `name`)
-
-## 🎨 Frontend Pages
-
-1. **Home** (`/`) - Browse all celestial bodies with filters and pagination
-2. **Detail** (`/body/:idOrSlug`) - View detailed information about a body
-3. **Login** (`/login`) - Admin authentication
-4. **Admin Dashboard** (`/admin`) - Manage celestial bodies (CRUD)
-
-## 🔑 Default Admin Credentials
-
-- **Email**: `admin@space.com`
-- **Password**: `Admin@123`
-
-## 🛡️ Security Features
-
-- **Helmet**: Security headers
-- **MongoDB Sanitization**: Prevents NoSQL injection
-- **Rate Limiting**: 5 login attempts per 15 minutes
-- **JWT Authentication**: Secure token-based auth
-- **Input Validation**: Joi schemas for all inputs
-- **Error Handling**: No sensitive data leakage
-
-## 🎯 Key Technologies
-
-### Backend
-- Node.js & Express
-- MongoDB & Mongoose
-- JWT for authentication
-- Joi for validation
-- Helmet, express-mongo-sanitize, express-rate-limit
-- Slugify for URL-friendly identifiers
-
-### Frontend
-- React 18
-- React Router v6
-- Axios for API calls
-- Vite for build tooling
-- Modern CSS with custom properties
-- Google Fonts (Inter)
-
-## 📝 Development Scripts
-
-### Backend
-```bash
-npm start          # Start server
-node utils/createAdmin.js  # Create admin user
+#### Get Single Celestial Body
+```http
+GET /api/bodies/:id
 ```
 
-### Frontend
-```bash
-npm run dev        # Start dev server
-npm run build      # Build for production
-npm run preview    # Preview production build
-```
+### Protected Endpoints (Admin Only)
 
-## 🌟 Design Highlights
-
-- **Deep Space Theme**: Dark mode with cosmic gradients
-- **Glassmorphism**: Frosted glass effects on navbar
-- **Smooth Animations**: Fade-in, slide-in, hover effects
-- **Type-Specific Colors**: Each celestial body type has unique badge colors
-- **Responsive Grid**: Auto-adjusting layouts for all screen sizes
-- **Premium Feel**: Shadows, gradients, and micro-interactions
-
-## 📊 Data Model
-
-### CelestialBody
-```javascript
-{
-  name: String (required, max 200 chars),
-  slug: String (unique, auto-generated),
-  type: Enum (Planet, Moon, Asteroid, Comet, Dwarf Planet, Other),
-  description: String (required, 10-2000 chars),
-  discoveryDate: Date (optional),
-  discoveredBy: String (optional, max 200 chars),
-  createdAt: Date (auto),
-  updatedAt: Date (auto)
+#### Create Celestial Body
+```http
+POST /api/bodies
+Headers: Authorization: Bearer <token>
+Body: {
+  name: string (required),
+  type: string (required),
+  description: string (required, min 50 chars),
+  imageUrl: string (required),
+  discoveredBy: string (required),
+  discoveryDate: string (required),
+  funFact: string (required)
 }
 ```
 
-### User
-```javascript
-{
-  email: String (unique, required),
-  passwordHash: String (required),
-  role: String (default: "admin")
+#### Update Celestial Body
+```http
+PUT /api/bodies/:id
+Headers: Authorization: Bearer <token>
+Body: Same as POST
+```
+
+#### Delete Celestial Body
+```http
+DELETE /api/bodies/:id
+Headers: Authorization: Bearer <token>
+```
+
+### Authentication Endpoints
+
+#### Login
+```http
+POST /api/auth/login
+Body: {
+  username: string,
+  password: string
+}
+Response: {
+  success: true,
+  token: string,
+  user: { username, role }
 }
 ```
 
-## 🔄 Workflow
+## 📸 Screenshots
 
-1. **Start MongoDB** (if not running)
-2. **Start Backend**: `npm start` in root directory
-3. **Create Admin**: `node utils/createAdmin.js` (first time only)
-4. **Start Frontend**: `npm run dev` in frontend directory
-5. **Access App**: Open `http://localhost:5173`
-6. **Login**: Use default credentials to access admin dashboard
+### Home Page
+Browse all celestial bodies with beautiful images and filtering options.
 
-## 🎓 Learning Resources
+### Detail Page
+View comprehensive information about each celestial body including:
+- High-quality NASA images
+- Detailed descriptions
+- Discovery information
+- Fun facts
 
-This project demonstrates:
-- RESTful API design
-- JWT authentication & authorization
-- MongoDB schema design with indexes
-- Input validation & sanitization
-- Error handling patterns
-- React component architecture
-- State management in React
-- API service layer pattern
-- CSS custom properties & theming
-- Responsive design principles
+### Admin Panel
+Secure admin interface for managing celestial bodies.
 
-## 📄 License
+## 🔒 Security Features
 
-MIT
+- **JWT Authentication** - Secure token-based auth
+- **Password Hashing** - Bcrypt with salt rounds
+- **Rate Limiting** - Prevents brute force attacks
+- **Helmet** - Security headers
+- **Mongo Sanitize** - Prevents NoSQL injection
+- **CORS** - Configured for security
+- **Input Validation** - All inputs validated
 
-## 👨‍💻 Author
+## 🌐 Environment Variables
 
-Built with ❤️ by SpaceAtlas-Refactor-AI
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `PORT` | Backend server port | 5000 |
+| `MONGO_URI` | MongoDB connection string | Required |
+| `JWT_SECRET` | Secret key for JWT | Required |
+| `JWT_EXPIRE` | JWT expiration time | 7d |
+| `ADMIN_USERNAME` | Admin username | admin |
+| `ADMIN_PASSWORD` | Admin password | Admin@123 |
+
+## 🐛 Troubleshooting
+
+### MongoDB Connection Issues
+- Verify your MongoDB URI is correct
+- Check if your IP is whitelisted in MongoDB Atlas
+- Ensure network connectivity
+
+### Port Already in Use
+```bash
+# Kill process on port 5000
+npx kill-port 5000
+
+# Or use a different port in .env
+PORT=5001
+```
+
+### Frontend Not Loading
+- Clear browser cache
+- Check if backend is running
+- Verify CORS settings
+
+## 📝 License
+
+This project is licensed under the ISC License.
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📧 Contact
+
+For questions or support, please open an issue in the repository.
+
+## 🙏 Acknowledgments
+
+- NASA for providing public domain images
+- MongoDB Atlas for database hosting
+- All contributors and users of this project
 
 ---
 
-**Enjoy exploring the cosmos! 🚀✨**
+**Made with ❤️ for space enthusiasts**
