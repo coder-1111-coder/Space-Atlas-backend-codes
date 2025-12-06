@@ -78,8 +78,8 @@ function Detail() {
     return (
         <div className="detail-page">
             <div className="container container-narrow">
-                <button onClick={() => navigate('/')} className="btn btn-secondary mb-2">
-                    ← Back to Home
+                <button onClick={() => navigate(-1)} className="btn btn-secondary mb-2">
+                    ← Back
                 </button>
 
                 <div className="detail-card fade-in">

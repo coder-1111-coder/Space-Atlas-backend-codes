@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { bodiesAPI } from '../services/api';
 import BodyCard from '../components/BodyCard';
 import './Home.css';
 
 function Home() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [bodies, setBodies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [filters, setFilters] = useState({
-        search: '',
-        type: '',
-        sort: '-createdAt',
-        page: 1,
+        search: searchParams.get('search') || '',
+        type: searchParams.get('type') || '',
+        sort: searchParams.get('sort') || '-createdAt',
+        page: parseInt(searchParams.get('page')) || 1,
         limit: 12
     });
     const [pagination, setPagination] = useState(null);
@@ -37,11 +39,30 @@ function Home() {
     };
 
     const handleFilterChange = (key, value) => {
-        setFilters(prev => ({ ...prev, [key]: value, page: 1 }));
+        const newFilters = { ...filters, [key]: value, page: 1 };
+        setFilters(newFilters);
+
+        // Update URL search params
+        const params = new URLSearchParams();
+        if (newFilters.search) params.set('search', newFilters.search);
+        if (newFilters.type) params.set('type', newFilters.type);
+        if (newFilters.sort && newFilters.sort !== '-createdAt') params.set('sort', newFilters.sort);
+        if (newFilters.page > 1) params.set('page', newFilters.page.toString());
+        setSearchParams(params);
     };
 
     const handlePageChange = (newPage) => {
-        setFilters(prev => ({ ...prev, page: newPage }));
+        const newFilters = { ...filters, page: newPage };
+        setFilters(newFilters);
+
+        // Update URL search params
+        const params = new URLSearchParams();
+        if (newFilters.search) params.set('search', newFilters.search);
+        if (newFilters.type) params.set('type', newFilters.type);
+        if (newFilters.sort && newFilters.sort !== '-createdAt') params.set('sort', newFilters.sort);
+        if (newFilters.page > 1) params.set('page', newFilters.page.toString());
+        setSearchParams(params);
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
