@@ -1,24 +1,47 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const asyncHandler = require("../utils/asyncHandler");
 
-exports.login = async (req, res) => {
-  // Simple validation
-  if (!req.body.email || !req.body.password) {
-    return res.status(400).json({ message: "Email & Password required" });
+/**
+ * @route   POST /api/auth/login
+ * @desc    Login admin and return JWT token
+ * @access  Public
+ */
+exports.login = asyncHandler(async (req, res) => {
+  const { username, password } = req.body;
+
+  // Validation
+  if (!username || !password) {
+    return res.status(400).json({
+      success: false,
+      message: "Username and password are required"
+    });
   }
 
-  const admin = await User.findOne({ email: req.body.email });
-  if (!admin) return res.status(401).json({ message: "Invalid credentials" });
+  // Verify credentials against environment variables
+  if (
+    username !== process.env.ADMIN_USERNAME ||
+    password !== process.env.ADMIN_PASSWORD
+  ) {
+    return res.status(401).json({
+      success: false,
+      message: "Invalid credentials"
+    });
+  }
 
-  const match = await bcrypt.compare(req.body.password, admin.passwordHash);
-  if (!match) return res.status(401).json({ message: "Invalid credentials" });
-
+  // Generate JWT token
   const token = jwt.sign(
-    { id: admin._id, role: admin.role },
+    { username, role: "admin" },
     process.env.JWT_SECRET,
-    { expiresIn: "1d" }
+    { expiresIn: "7d" }
   );
 
-  res.json({ token });
-};
+  res.json({
+    success: true,
+    message: "Login successful",
+    token,
+    user: {
+      username,
+      role: "admin"
+    }
+  });
+});

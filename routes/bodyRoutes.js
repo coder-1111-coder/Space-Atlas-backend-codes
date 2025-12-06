@@ -1,15 +1,37 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../middlewares/authMiddleware");
+const requireRole = require("../middlewares/requireRole");
+const validateBody = require("../middlewares/validateBody");
 const bodyCtrl = require("../controllers/bodyController");
 
-// Public
+// Public routes
 router.get("/", bodyCtrl.getBodies);
-router.get("/:id", bodyCtrl.getBody);
+router.get("/slug/:slug", bodyCtrl.getBodyBySlug);
+router.get("/:idOrSlug", bodyCtrl.getBody);
 
-// Admin
-router.post("/", auth, bodyCtrl.createBody);
-router.put("/:id", auth, bodyCtrl.updateBody);
-router.delete("/:id", auth, bodyCtrl.deleteBody);
+// Admin routes (protected)
+router.post(
+    "/",
+    auth,
+    requireRole("admin"),
+    validateBody,
+    bodyCtrl.createBody
+);
+
+router.put(
+    "/:idOrSlug",
+    auth,
+    requireRole("admin"),
+    validateBody,
+    bodyCtrl.updateBody
+);
+
+router.delete(
+    "/:idOrSlug",
+    auth,
+    requireRole("admin"),
+    bodyCtrl.deleteBody
+);
 
 module.exports = router;
