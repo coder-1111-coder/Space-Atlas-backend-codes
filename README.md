@@ -107,18 +107,16 @@ Edit `.env` with your settings:
 ```env
 # Server Configuration
 PORT=5000
-NODE_ENV=development
 
 # MongoDB Configuration
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_atlas_connection_string
 
 # JWT Configuration
 JWT_SECRET=your_super_secret_jwt_key_here
-JWT_EXPIRE=7d
 
 # Admin Credentials
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=Admin@123
+ADMIN_USERNAME=your_admin_username
+ADMIN_PASSWORD=your_secure_password
 ```
 
 **Important**: 
@@ -182,11 +180,12 @@ npm run seed:admin
 
 ## 🔐 Admin Access
 
-### Default Credentials
-- **Username**: `admin`
-- **Password**: `Admin@123`
+### Admin Credentials
+Use the credentials you configured in your `.env` file:
+- **Username**: Value of `ADMIN_USERNAME` in `.env`
+- **Password**: Value of `ADMIN_PASSWORD` in `.env`
 
-**⚠️ Important**: Change these credentials in production!
+**⚠️ Important**: Never commit your `.env` file to version control!
 
 ### Admin Panel
 Access the admin panel at: `http://localhost:5173/login`
@@ -220,8 +219,7 @@ Space-Atlas-backend-codes/
 │   ├── requireRole.js        # Role-based access
 │   └── validateBody.js       # Request validation
 ├── models/
-│   ├── CelestialBody.js      # Celestial body schema
-│   └── User.js               # User schema
+│   └── CelestialBody.js      # Celestial body schema
 ├── routes/
 │   ├── authRoutes.js         # Auth endpoints
 │   └── bodyRoutes.js         # Celestial body endpoints
@@ -329,14 +327,13 @@ Secure admin interface for managing celestial bodies.
 
 ## 🌐 Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PORT` | Backend server port | 5000 |
-| `MONGO_URI` | MongoDB connection string | Required |
-| `JWT_SECRET` | Secret key for JWT | Required |
-| `JWT_EXPIRE` | JWT expiration time | 7d |
-| `ADMIN_USERNAME` | Admin username | admin |
-| `ADMIN_PASSWORD` | Admin password | Admin@123 |
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `PORT` | Backend server port | No (default: 5000) |
+| `MONGO_URI` | MongoDB connection string | Yes |
+| `JWT_SECRET` | Secret key for JWT | Yes |
+| `ADMIN_USERNAME` | Admin username | Yes |
+| `ADMIN_PASSWORD` | Admin password | Yes |
 
 ## 🐛 Troubleshooting
 

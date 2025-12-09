@@ -7,7 +7,6 @@ const mongoSanitize = require("express-mongo-sanitize");
 const rateLimit = require("express-rate-limit");
 
 const connectDB = require("./config/db");
-const logger = require("./middlewares/logger");
 const errorHandler = require("./middlewares/errorHandler");
 
 const authRoutes = require("./routes/authRoutes");
@@ -25,7 +24,7 @@ app.use(mongoSanitize()); // Prevent MongoDB injection
 // Rate limiting for auth routes
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // 5 requests per windowMs
+  max: 20, // 20 requests per windowMs
   message: {
     success: false,
     message: "Too many login attempts, please try again later"
@@ -42,7 +41,6 @@ app.use(cors({
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(morgan("dev"));
-app.use(logger);
 
 // Routes
 app.use("/api/auth", authLimiter, authRoutes);

@@ -37,6 +37,9 @@ function Login() {
             localStorage.setItem('token', response.token);
             localStorage.setItem('user', JSON.stringify(response.user));
 
+            // Notify other components of auth change
+            window.dispatchEvent(new Event('authChange'));
+
             // Redirect to admin dashboard
             navigate('/admin');
         } catch (err) {
